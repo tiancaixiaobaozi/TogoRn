@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
-export default class My extends Component {
+export default class Discover extends Component {
   render() {
-    return <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>My</View>;
+    return (
+      <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
+        <Text>My</Text>
+      </View>
+    );
   }
 }

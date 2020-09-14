@@ -8,6 +8,10 @@ target 'TogoRn' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'TogoRnTests' do
     inherit! :complete
     # Pods for testing
