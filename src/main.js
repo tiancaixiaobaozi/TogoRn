@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import App from './App';
 import SplashScreen from 'react-native-splash-screen';
-import { BackHandler, ToastAndroid } from 'react-native';
+import { StatusBar, BackHandler, ToastAndroid } from 'react-native';
 
 export default class Main extends Component {
   // 构造
@@ -33,6 +33,11 @@ export default class Main extends Component {
   };
 
   render() {
-    return <App />;
+    return (
+      <>
+        <StatusBar backgroundColor="transparent" translucent />
+        <App />
+      </>
+    );
   }
 }

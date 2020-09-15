@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 export default class Discover extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
-      <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
+      <View style={{ flex: 1, backgroundColor: '#cccfff' }}>
+        <Button onPress={() => navigate('Login')} title="跳转登录">
+          登录
+        </Button>
         <Text>My</Text>
       </View>
     );

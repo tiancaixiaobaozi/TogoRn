@@ -1,34 +1,42 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Keyboard,
   View,
   TouchableOpacity,
   Image,
   Dimensions,
   BackHandler,
 } from 'react-native';
-import CountdownUtil from '../../util/CountdownUtil';
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { isIphoneX, zAppBarHeight, zdp, zsp } from '../../util/ScreenUtil';
-import MyTabView from '../../components/MyTabView';
+
+import CountdownUtil from '../../util/CountdownUtil';
 import MyTextInputWithIcon from '../../components/MyTextInputWithIcon';
 import { cusColors } from '../../util/cusColors';
-import { checkMobile, pressVerify } from '../../util';
-import MyButtonView from '../../components/MyButtonView';
-import ToastUtil from '../../util/ToastUtil';
+import { pressVerify } from '../../util';
 import ZText from '../../components/ZText';
+import MyButtonView from '../../components/MyButtonView';
+import MyTabView from '../../components/MyTabView';
+import { checkMobile } from '../../util';
+import ToastUtil from '../../util/ToastUtil';
 
 const { width, height } = Dimensions.get('window');
 
-export default class LoginByVerify extends Component {
+export default class ForgetPass extends Component {
+  static navigationOptions = {
+    title: '忘记密码',
+  };
+
   constructor(props) {
     super(props);
+
     this.state = {
       phone: '',
       verifyCode: '',
+      passwordNew: '',
+      passwordSure: '',
       isSentVerify: true,
       timerTitle: '获取验证码',
-      isSuccess: false,
     };
   }
 
@@ -37,12 +45,11 @@ export default class LoginByVerify extends Component {
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
     CountdownUtil.stop();
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
   }
 
   onBackPress = () => {
-    // return true   拦截,不让退出
     this.props.navigation.goBack();
     return true;
   };
@@ -50,47 +57,54 @@ export default class LoginByVerify extends Component {
   render() {
     return (
       <View
-        style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
-        <Image
-          source={{ uri: isIphoneX() ? 'login_bg_x' : 'login_bg' }}
-          resizeMode={'cover'}
-          style={{
-            width,
-            height,
-            position: 'absolute',
+        style={{
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          backgroundColor: 'white',
+        }}>
+        <KeyboardAwareScrollView
+          style={{ flex: 1, backgroundColor: 'transparent' }}
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          contentContainerStyle={{
+            justifyContent: 'flex-start',
+            alignItems: 'center',
           }}
-        />
+          showsVerticalScrollIndicator={false}
+          scrollEnabled={false}
+          keyboardShouldPersistTaps={'always'}>
+          <Image
+            source={{ uri: isIphoneX() ? 'login_bg_x' : 'login_bg' }}
+            resizeMode={'cover'}
+            style={{
+              width,
+              height: height,
+              position: 'absolute',
+            }}
+          />
 
-        <MyTabView
-          title={'验证码登录'}
-          isTransparent={true}
-          backgroundColor={'transparent'}
-          globalTitleColor={'white'}
-          barStyle={'light-content'}
-          navigation={this.props.navigation}
-        />
-
-        <View style={{ flex: 1, alignItems: 'center' }}>
           <Image
             source={require('../../img/logo2.png')}
             style={{
               width: zdp(140),
-              height: zdp(100),
-              marginTop: zdp(100) - zAppBarHeight,
+              height: zdp(80),
+              marginTop: zAppBarHeight + zdp(40),
             }}
             resizeMode={'contain'}
           />
+
           <MyTextInputWithIcon
             style={{ marginTop: zdp(140) }}
             placeholder={'请输入手机号'}
-            iconName={'login_phone'}
             keyboardType={'numeric'}
             onChangeText={(text) => {
               this.setState({
                 phone: text,
               });
             }}
+            iconName={'login_phone'}
           />
+
           <View
             style={{
               width: width / 1.3,
@@ -115,6 +129,7 @@ export default class LoginByVerify extends Component {
               }}
               iconName={'login_verify'}
             />
+
             <TouchableOpacity
               activeOpacity={this.state.isSentVerify ? 0.5 : 1}
               onPress={() => {
@@ -174,39 +189,78 @@ export default class LoginByVerify extends Component {
               </View>
             </TouchableOpacity>
           </View>
-          <MyButtonView
-            modal={1}
-            style={{ width: width / 1.3, marginTop: zdp(30) }}
-            title={'登录'}
-            onPress={this.pressLogin}
+
+          <MyTextInputWithIcon
+            placeholder={'请输入新密码'}
+            secureTextEntry={true}
+            onChangeText={(text) => {
+              this.setState({
+                passwordNew: text,
+              });
+            }}
+            iconName={'login_psw'}
           />
-        </View>
+
+          <MyTextInputWithIcon
+            placeholder={'确认密码'}
+            secureTextEntry={true}
+            onChangeText={(text) => {
+              this.setState({
+                passwordSure: text,
+              });
+            }}
+            iconName={'login_psw'}
+          />
+
+          <View
+            style={{
+              flex: 1,
+              width: width,
+              height: zdp(138.5),
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+            }}>
+            <MyButtonView
+              modal={1}
+              style={{ width: width / 1.3, marginTop: zdp(30) }}
+              title={'确认修改'}
+              onPress={this.pressSureChange}
+            />
+          </View>
+
+          <MyTabView
+            linear_style={{ position: 'absolute' }}
+            isTransparent={true}
+            title={'忘记密码'}
+            barStyle={'light-content'}
+            backgroundColor={'transparent'}
+            globalTitleColor={'white'}
+            navigation={this.props.navigation}
+          />
+        </KeyboardAwareScrollView>
       </View>
     );
   }
 
-  pressLogin = () => {
+  /**
+   * 确认修改
+   */
+  pressSureChange = () => {
     if (!checkMobile(this.state.phone)) {
       return;
     }
-    Keyboard.dismiss();
-    if (this.state.verifyCode.length < 4) {
-      ToastUtil.showShort('验证码长度错误');
+
+    console.log('确认修改');
+    let formData = new FormData();
+    formData.append('phone', this.state.phone);
+    formData.append('password', this.state.passwordNew);
+    formData.append('code', this.state.verifyCode);
+
+    if (true) {
+      CountdownUtil.stop();
+      this.props.navigation.navigate('RegisterSuccess', { type: 0 });
     } else {
-      let formData = new FormData();
-      formData.append('phone', this.state.phone);
-      formData.append('code', this.state.verifyCode);
-      // TODO request
-      if (true) {
-        CountdownUtil.stop();
-        this.props.navigation.navigate('My');
-      } else {
-        ToastUtil.showShort('request error');
-      }
+      ToastUtil.showShort('request error');
     }
   };
 }
-
-LoginByVerify.propTypes = {
-  phone: PropTypes.string,
-};

@@ -80,14 +80,6 @@ export default class LoginView extends Component {
           />
           <View style={{ justifyContent: 'center', alignItems: 'center' }} />
           <View style={{ flex: 1, alignItems: 'center' }}>
-            <StatusBar
-              hidden={false}
-              translucent={true}
-              barStyle={'light-content'} //'default', 'light-content', 'dark-content'
-              backgroundColor={'#fff6fd00'}
-              networkActivityIndicatorVisible={false}
-            />
-
             <Image
               source={require('../../img/logo2.png')}
               style={{
@@ -112,7 +104,6 @@ export default class LoginView extends Component {
             });
           }}
         />
-
         <MyTextInputWithIcon
           secureTextEntry={true}
           placeholder={'密码登录'}
@@ -125,7 +116,6 @@ export default class LoginView extends Component {
             });
           }}
         />
-
         <MyButtonView
           style={{ width: width / 1.3, marginTop: zdp(75.5) }}
           modal={1}
@@ -192,13 +182,13 @@ export default class LoginView extends Component {
   }
 
   pressLoginByVerify = () => {
-    // this.props.navigate('LoginByVerify');
+    this.props.navigate('LoginByVerify');
   };
   pressForgetPsw = () => {
-    // this.props.navigate('ForgetPsw');
+    this.props.navigate('ForgetPass');
   };
   pressRegister = () => {
-    // this.props.navigate('RegisterMerchant');
+    this.props.navigate('RegisterScreen');
   };
 }
 

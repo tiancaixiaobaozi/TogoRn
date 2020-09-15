@@ -1,34 +1,35 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import TabNav from './components/TabNav';
 import LoginScreen from './pages/Login/LoginScreen';
 import LoginByVerify from './pages/Login/LoginByVerify';
-// import ForgetPsw from './pages/Login/ForgetPsw';
-// import RegisterMerchant from './pages/Login/RegisterMerchant';
-// import RegisterMerchantNext from './pages/Login/RegisterMerchantNext';
-// import RegisterSuccess from './pages/Login/RegisterSuccess';
+import ForgetPass from './pages/Login/ForgetPass';
+import RegisterScreen from './pages/Login/RegisterScreen';
 
-// ForgetPsw: { screen: ForgetPsw }, // 忘记密码
-// RegisterMerchant: { screen: RegisterMerchant }, // 注册页
-// RegisterMerchantNext: { screen: RegisterMerchantNext }, // 注册下一页
-// RegisterSuccess: { screen: RegisterSuccess }, // 注册成功
-
-const App = StackNavigator(
+const App = createStackNavigator(
   {
-    Login: { screen: LoginScreen }, // 登录页
-    LoginByVerify: { screen: LoginByVerify }, // 短信登录
+    // 登录页
+    Login: { screen: LoginScreen },
+    // 短信登录
+    LoginByVerify: { screen: LoginByVerify },
+    // 忘记密码
+    ForgetPass: { screen: ForgetPass },
+    // 注册页
+    RegisterScreen: { screen: RegisterScreen },
     Main: {
       screen: TabNav,
-      navigationOptions: ({ navigation }) => ({
-        header: null,
-      }),
+      navigationOptions: ({ navigation }) => {
+        const route = navigation.state.routes[navigation.state.index];
+        return {
+          headerTitle: route.routeName,
+        };
+      },
     },
   },
   {
     initialRouteName: 'Main',
-    headerMode: 'screen',
   },
 );
 
-export default App;
+export default createAppContainer(App);
