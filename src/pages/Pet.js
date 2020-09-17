@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ImageBackground, Text, StyleSheet } from 'react-native';
 
-export default class Discover extends Component {
+export default class Pet extends Component {
   static navigationOptions = {
     headerTitle: 'Discover222',
     headerTransparent: true,

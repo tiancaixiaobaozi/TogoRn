@@ -19,12 +19,9 @@ const App = createStackNavigator(
     RegisterScreen: { screen: RegisterScreen },
     Main: {
       screen: TabNav,
-      navigationOptions: ({ navigation }) => {
-        const route = navigation.state.routes[navigation.state.index];
-        return {
-          headerTitle: route.routeName,
-        };
-      },
+      navigationOptions: () => ({
+        header: null,
+      }),
     },
   },
   {

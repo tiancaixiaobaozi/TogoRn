@@ -4,8 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import Home from '../pages/Home';
-import Discover from '../pages/Discover';
-import Order from '../pages/Order';
+import Pet from '../pages/Pet';
 import My from '../pages/My';
 
 const Tab = createBottomTabNavigator(
@@ -16,17 +15,10 @@ const Tab = createBottomTabNavigator(
         tabBarLabel: '首页',
       },
     },
-    Discover: {
-      screen: Discover,
+    Pet: {
+      screen: Pet,
       navigationOptions: {
-        headerTitle: 'ByeBye',
-        tabBarLabel: '分类',
-      },
-    },
-    Order: {
-      screen: Order,
-      navigationOptions: {
-        tabBarLabel: '订单',
+        tabBarLabel: '养宠',
       },
     },
     My: {
@@ -42,9 +34,9 @@ const Tab = createBottomTabNavigator(
     tabBarPosition: 'bottom',
     tabBarOptions: {
       //当前选中的tab bar的文本颜色和图标颜色
-      activeTintColor: '#10dff1',
+      activeTintColor: '#3667EE',
       //当前未选中的tab bar的文本颜色和图标颜色
-      inactiveTintColor: '#999999',
+      inactiveTintColor: '#333333',
       //是否显示tab bar的图标，默认是false
       showIcon: true,
       //showLabel: 是否显示tab bar的文本，默认是true
@@ -78,22 +70,18 @@ const Tab = createBottomTabNavigator(
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
         let icon;
-        if (routeName === 'Discover') {
+        if (routeName === 'Home') {
           icon = focused
-            ? require('../img/fri_sel.png')
-            : require('../img/fri_nor.png');
-        } else if (routeName === 'Order') {
+            ? require('../access/images/icon_tab_home_a.png')
+            : require('../access/images/icon_tab_home.png');
+        } else if (routeName === 'Pet') {
           icon = focused
-            ? require('../img/car_sel.png')
-            : require('../img/car_nor.png');
+            ? require('../access/images/icon_tab_pet_a.png')
+            : require('../access/images/icon_tab_pet.png');
         } else if (routeName === 'My') {
           icon = focused
-            ? require('../img/deal_sel.png')
-            : require('../img/deal_nor.png');
-        } else if (routeName === 'Home') {
-          icon = focused
-            ? require('../img/home_sel.png')
-            : require('../img/home_nor.png');
+            ? require('../access/images/icon_tab_my_a.png')
+            : require('../access/images/icon_tab_my.png');
         }
         return <Image style={styles.icon} source={icon} />;
       },
@@ -111,8 +99,8 @@ const Tab = createBottomTabNavigator(
 
 const styles = StyleSheet.create({
   icon: {
-    width: 20,
-    height: 20,
+    width: 24,
+    height: 24,
   },
 });
 

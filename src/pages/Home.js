@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapper: {
-    backgroundColor: '#64958f',
+    backgroundColor: '#EEF3FF',
     padding: 20,
   },
   font: {
     fontSize: 24,
-    color: '#fff',
+    color: '#999',
   },
 });
