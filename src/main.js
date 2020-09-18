@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import App from './App';
-import SplashScreen from 'react-native-splash-screen';
 import { StatusBar, BackHandler, ToastAndroid } from 'react-native';
 
 export default class Main extends Component {
@@ -11,10 +10,6 @@ export default class Main extends Component {
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
-  }
-
-  componentDidMount() {
-    SplashScreen.hide(); // 隐藏启动屏
   }
 
   componentWillUnmount() {
