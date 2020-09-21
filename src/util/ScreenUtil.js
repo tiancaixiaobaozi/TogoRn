@@ -49,7 +49,7 @@ const zdp = (dp) => {
   let number = dp * 3.5;
 
   // let number = dp * 2;
-  let newSize = Math.round(number * scale + 0.5);
+  let newSize = Math.round(number * scale1 + 0.5);
   return newSize / defaultPixel;
 };
 

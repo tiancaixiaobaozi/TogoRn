@@ -7,7 +7,10 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  PixelRatio,
+  Dimensions,
 } from 'react-native';
+import { zdp } from '../util/ScreenUtil';
 
 const walkImg = require('../images/bg_menu_walk.png');
 
@@ -76,7 +79,7 @@ export default class HomePage extends Component {
               <ImageBackground
                 key={m.name}
                 source={m.icon}
-                style={styles.menuItem}
+                style={[styles.menuItem, styles.menuBg]}
               />
             ))}
           </View>
@@ -98,16 +101,21 @@ const styles = StyleSheet.create({
     marginTop: 134,
   },
   menuWrapper: {
-    backgroundColor: 'yellowgreen',
     marginTop: 40,
     marginBottom: 57,
+    paddingLeft: 12,
+    paddingRight: 12,
     height: 243,
     justifyContent: 'space-between',
+    alignContent: 'space-around',
     flexWrap: 'wrap',
+  },
+  menuBg: {
+    backgroundColor: '#cccfff',
+    resizeMode: 'stretch',
   },
   menuItem: {
     width: 171,
     height: 117,
-    backgroundColor: '#cccfff',
   },
 });
