@@ -27,7 +27,7 @@ const scale1 = Math.min(zHeight / h1, zWidth / w1); //获取缩放比例
 // const scale1 = zHeight / h1;   //获取缩放比例
 
 /**
- *字体尺寸
+ * 字体尺寸
  * @param sp
  * @returns {number}
  */
@@ -40,17 +40,6 @@ const zsp = (sp) => {
   return sp / zFontScale / fontScale;
 };
 
-/**
- * 设置text为sp
- * @param size sp
- * return number dp
- */
-/*const zsp = (size) => {
-    /!* size = Math.round((size * scale + 0.5) * zPixelScale / fontScale);
-     return size*1.3/ defaultPixel;*!/
-    const fontSizeScaler = zPixelScale / fontScale;
-    return size * fontSizeScaler/2;
-};*/
 /**
  * 控件尺寸
  * @param dp

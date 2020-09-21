@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { SafeAreaView, ScrollView, Text, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  StyleSheet,
+  Image,
+} from 'react-native';
 
 export default class HomePage extends Component {
   // navigationOptions
@@ -23,40 +29,15 @@ export default class HomePage extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.wrapper}>
-          <Text style={styles.font}>Hello World-1</Text>
-          <Text style={styles.font}>Hello World-2</Text>
-          <Text style={styles.font}>Hello World-3</Text>
-          <Text style={styles.font}>Hello World-4</Text>
-          <Text style={styles.font}>Hello World-5</Text>
-          <Text style={styles.font}>Hello World-6</Text>
-          <Text style={styles.font}>Hello World-7</Text>
-          <Text style={styles.font}>Hello World-8</Text>
-          <Text style={styles.font}>Hello World-9</Text>
-          <Text style={styles.font}>Hello World-10</Text>
-          <Text style={styles.font}>Hello World-11</Text>
-          <Text style={styles.font}>Hello World-12</Text>
-          <Text style={styles.font}>Hello World-13</Text>
-          <Text style={styles.font}>Hello World-14</Text>
-          <Text style={styles.font}>Hello World-15</Text>
-          <Text style={styles.font}>Hello World-16</Text>
-          <Text style={styles.font}>Hello World-17</Text>
-          <Text style={styles.font}>Hello World-18</Text>
-          <Text style={styles.font}>Hello World-19</Text>
-          <Text style={styles.font}>Hello World-20</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>Hello World-21</Text>
-          <Text style={styles.font}>-----End------</Text>
+        <ScrollView>
+          <Image
+            source={require('../images/bg_expression1.png')}
+            style={styles.slogan}
+            resizeMode={'contain'}
+          />
+          <View style={styles.menuWrapper}>
+            
+          </View>
         </ScrollView>
       </SafeAreaView>
     );
@@ -66,13 +47,18 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  wrapper: {
     backgroundColor: '#EEF3FF',
-    padding: 20,
   },
-  font: {
-    fontSize: 24,
-    color: '#999',
+  slogan: {
+    width: 313,
+    height: 290,
+    marginLeft: 62,
+    marginTop: 134,
+  },
+  menuWrapper: {
+    marginTop: 40,
+    height: 243,
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
   },
 });

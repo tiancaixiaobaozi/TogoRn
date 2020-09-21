@@ -72,16 +72,16 @@ const Tab = createBottomTabNavigator(
         let icon;
         if (routeName === 'Home') {
           icon = focused
-            ? require('../access/images/icon_tab_home_a.png')
-            : require('../access/images/icon_tab_home.png');
+            ? require('../images/icon_tab_home_a.png')
+            : require('../images/icon_tab_home.png');
         } else if (routeName === 'Pet') {
           icon = focused
-            ? require('../access/images/icon_tab_pet_a.png')
-            : require('../access/images/icon_tab_pet.png');
+            ? require('../images/icon_tab_pet_a.png')
+            : require('../images/icon_tab_pet.png');
         } else if (routeName === 'My') {
           icon = focused
-            ? require('../access/images/icon_tab_my_a.png')
-            : require('../access/images/icon_tab_my.png');
+            ? require('../images/icon_tab_my_a.png')
+            : require('../images/icon_tab_my.png');
         }
         return <Image style={styles.icon} source={icon} />;
       },

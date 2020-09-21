@@ -72,7 +72,7 @@ export default class LoginByVerify extends Component {
 
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Image
-            source={require('../../img/logo2.png')}
+            source={require('../../images/icon_tab_home_a.png')}
             style={{
               width: zdp(140),
               height: zdp(100),

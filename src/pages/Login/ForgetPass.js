@@ -73,18 +73,18 @@ export default class ForgetPass extends Component {
           showsVerticalScrollIndicator={false}
           scrollEnabled={false}
           keyboardShouldPersistTaps={'always'}>
-          <Image
-            source={{ uri: isIphoneX() ? 'login_bg_x' : 'login_bg' }}
-            resizeMode={'cover'}
-            style={{
-              width,
-              height: height,
-              position: 'absolute',
-            }}
-          />
+          {/*<Image*/}
+          {/*  source={{ uri: isIphoneX() ? 'login_bg_x' : 'login_bg' }}*/}
+          {/*  resizeMode={'cover'}*/}
+          {/*  style={{*/}
+          {/*    width,*/}
+          {/*    height: height,*/}
+          {/*    position: 'absolute',*/}
+          {/*  }}*/}
+          {/*/>*/}
 
           <Image
-            source={require('../../img/logo2.png')}
+            source={require('../../images/icon_tab_home_a.png')}
             style={{
               width: zdp(140),
               height: zdp(80),
