@@ -46,6 +46,10 @@ const App = createStackNavigator(
             return {
               header: null,
             };
+          case 2:
+            return {
+              title: '个人中心',
+            };
           default:
             break;
         }

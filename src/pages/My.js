@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import {View, ScrollView, Text, StyleSheet, Button} from 'react-native';
 
 export default class My extends Component {
   static navigationOptions = {
@@ -7,10 +7,14 @@ export default class My extends Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <ScrollView>
-          <Text style={styles.text}>See you again</Text>
+          <Text>My</Text>
+          <Text>My</Text>
+          <Button onPress={() => navigate('Login')} title="跳转登录" />
+          <Button onPress={() => navigate('Demo')} title="跳转测试" />
         </ScrollView>
       </View>
     );

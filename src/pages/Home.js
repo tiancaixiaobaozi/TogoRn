@@ -3,9 +3,13 @@ import {
   SafeAreaView,
   ScrollView,
   Text,
+  View,
   StyleSheet,
   Image,
+  ImageBackground,
 } from 'react-native';
+
+const walkImg = require('../images/bg_menu_walk.png');
 
 export default class HomePage extends Component {
   // navigationOptions
@@ -26,7 +30,39 @@ export default class HomePage extends Component {
   // <li>headerPressColorAndroid：设置导航栏被按下时的颜色纹理，Android需要版本大于5.0。</li>
   // <li>headerTransparent：设置标题背景是否透明。</li>
   // <li>gesturesEnabled：设置是否可以使用手势关闭当前页面，iOS默认开启，Android默认关闭。</li>
+  constructor() {
+    super();
+    this.state = {
+      menus: [
+        {
+          name: 'walk',
+          label: '遛一遛',
+          route: 'Walk',
+          icon: walkImg,
+        },
+        {
+          name: 'buried',
+          label: '嗅一嗅',
+          route: 'Buried',
+          icon: walkImg,
+        },
+        {
+          name: 'lookfor',
+          label: '藏东西',
+          route: 'Lookfor',
+          icon: walkImg,
+        },
+        {
+          name: 'medical',
+          label: '紧急防护',
+          route: 'Medical',
+          icon: walkImg,
+        },
+      ],
+    };
+  }
   render() {
+    const { menus } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -36,7 +72,13 @@ export default class HomePage extends Component {
             resizeMode={'contain'}
           />
           <View style={styles.menuWrapper}>
-            
+            {menus.map((m) => (
+              <ImageBackground
+                key={m.name}
+                source={m.icon}
+                style={styles.menuItem}
+              />
+            ))}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -56,9 +98,16 @@ const styles = StyleSheet.create({
     marginTop: 134,
   },
   menuWrapper: {
+    backgroundColor: 'yellowgreen',
     marginTop: 40,
+    marginBottom: 57,
     height: 243,
     justifyContent: 'space-between',
-    alignItems: 'stretch',
+    flexWrap: 'wrap',
+  },
+  menuItem: {
+    width: 171,
+    height: 117,
+    backgroundColor: '#cccfff',
   },
 });

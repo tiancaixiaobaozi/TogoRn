@@ -43,13 +43,8 @@ export default class Pet extends Component {
     Alert.alert(`${latitude}, ${longitude}`);
 
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View style={{ flex: 1, backgroundColor: '#cccfff' }}>
-        <Text>My</Text>
-        <Text>My</Text>
-        <Button onPress={() => navigate('Login')} title="跳转登录" />
-        <Button onPress={() => navigate('Demo')} title="跳转测试" />
         {/* ------------EXAMPLE 1----------- */}
         {/*<MapView*/}
         {/*  mapType={MapType.Night}*/}
