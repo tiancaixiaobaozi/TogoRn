@@ -9,9 +9,8 @@ export default class Discover extends Component {
       <View style={{ flex: 1, backgroundColor: '#cccfff' }}>
         <Text>My</Text>
         <Text>My</Text>
-        <Button onPress={() => navigate('Login')} title="跳转登录">
-          登录
-        </Button>
+        <Button onPress={() => navigate('Login')} title="跳转登录" />
+        <Button onPress={() => navigate('Demo')} title="跳转测试" />
         <MapView
           style={StyleSheet.absoluteFill}
           coordinate={{ latitude: 39.91095, longitude: 116.37296 }}
