@@ -7,6 +7,18 @@ import Home from '../pages/Home';
 import Pet from '../pages/Pet';
 import My from '../pages/My';
 
+// navigationOptions {...}
+// title: 可以用作headerTitle和tabBarLabel的备选的通用标题。
+// tabBarVisible: 显示或隐藏TabBar，默认显示；
+// tabBarIcon: 设置TabBar的图标；
+// tabBarLabel: 设置TabBar的标签；
+// tabBarOnPress: Tab被点击的回调函数，它的参数是一保函一下变量的对象：
+// navigation: navigation prop ；
+// defaultHandler: tab按下的默认处理程序；
+// tabBarButtonComponent：React组件，它包装图标和标签并实现onPress。 默认情况下是TouchableWithoutFeedback的一个封装，使其其表现与其它可点击组件相同，tabBarButtonComponent: TouchableOpacity 将使用 TouchableOpacity 来替代；
+// tabBarAccessibilityLabel：选项卡按钮的辅助功能标签。 当用户点击标签时，屏幕阅读器会读取这些信息。 如果您没有选项卡的标签，建议设置此项；
+// tabBarTestID：用于在测试中找到该选项卡按钮的 ID；
+
 const Tab = createBottomTabNavigator(
   {
     Home: {
