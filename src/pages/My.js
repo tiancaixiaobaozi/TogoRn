@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, ScrollView, Text, StyleSheet, Button} from 'react-native';
+import { View, ScrollView, Text, StyleSheet, Button } from 'react-native';
 
 export default class My extends Component {
   static navigationOptions = {
